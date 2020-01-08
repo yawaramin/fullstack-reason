@@ -1,0 +1,32 @@
+{
+  "name": "fullstack-reason",
+  "reason": {
+    "react-jsx": 3
+  },
+  "sources": [
+    {
+      "dir": "frontend",
+      "subdirs": true
+    },
+    {
+      "dir": "shared",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "reason-react"
+  ],
+  "refmt": 3,
+  "warnings": {
+    "number": "+A-48-105",
+    "error": "+A-3-44-102"
+  }
+}

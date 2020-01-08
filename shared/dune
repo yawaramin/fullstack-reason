@@ -1,0 +1,5 @@
+(library
+  (name shared)
+  (flags (-w -40 -w +26))
+  (public_name fullstack-reason))
+

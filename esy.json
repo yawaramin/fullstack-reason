@@ -1,0 +1,61 @@
+{
+  "name": "fullstack-reason",
+  "version": "0.1.0",
+  "description": "Example Reason Esy Project",
+  "license": "MIT",
+  "esy": {
+    "build": "dune build --only-packages #{self.name}",
+    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "release": {
+      "bin": [
+        "App"
+      ]
+    },
+    "buildEnv": {
+      "ODOC_SYNTAX": "re"
+    }
+  },
+  "scripts": {
+    "bin": "esy b dune exec backend/App.bc",
+    "doc": "esy dune build @doc"
+  },
+  "dependencies": {
+    "@esy-ocaml/reason": ">= 3.4.0 < 3.6.0",
+    "@opam/dune": ">= 1.2.1 < 2.0.0",
+    "@opam/lwt": ">= 5.1.0 < 6.0.0",
+    "@opam/lwt_ppx": ">= 2.0.0 < 3.0.0",
+    "@opam/re-web": "*",
+    "ocaml": "~4.8.1000"
+  },
+  "devDependencies": {
+    "@opam/merlin": "*",
+    "ocaml": "~4.8.1000",
+    "@opam/odoc": "*",
+    "@opam/utop": "*"
+  },
+  "resolutions": {
+    "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#90e7c87",
+    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#90e7c87",
+    "@opam/httpaf-lwt-unix": "anmonteiro/httpaf:httpaf-lwt-unix.opam#90e7c87",
+    "@opam/multipart-form-data": "cryptosense/multipart-form-data:multipart-form-data.opam#d49fd89",
+    "@opam/piaf": {
+      "source": "anmonteiro/piaf:piaf.opam#172fcce",
+      "override": {
+        "dependencies": {
+          "@opam/ocaml-syntax-shims": null
+        }
+      }
+    },
+    "@opam/re-web": "yawaramin/re-web:package.json#348374b",
+    "@opam/ssl": "savonet/ocaml-ssl:ssl.opam#fbffa9b",
+    "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#42673bd",
+    "@opam/websocketaf-lwt-unix": {
+      "source": "anmonteiro/websocketaf:websocketaf-lwt-unix.opam#42673bd",
+      "override": {
+        "dependencies": {
+          "@opam/websocketaf-lwt": "anmonteiro/websocketaf:websocketaf-lwt.opam#42673bd"
+        }
+      }
+    }
+  }
+}
