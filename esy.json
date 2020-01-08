@@ -34,6 +34,7 @@
     "@opam/utop": "*"
   },
   "resolutions": {
+    "@opam/conf-libssl": "esy-packages/esy-openssl#860ad7f",
     "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#90e7c87",
     "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#90e7c87",
     "@opam/httpaf-lwt-unix": "anmonteiro/httpaf:httpaf-lwt-unix.opam#90e7c87",
