@@ -21,13 +21,24 @@ Follow these steps:
 1. Install [NodeJS](https://nodejs.org/en/) (one-time setup)
 1. Install Esy (one-time setup): `npm install --global esy@latest`
 1. Set up the backend project: `esy install`
-1. Run the backend: `esy b dune exec backend/App.exe`
+1. Run the backend app: `esy b dune exec backend/App.exe`
 1. In another terminal, build frontend:
    a. `npm install` (or use [pnpm](https://pnpm.js.org/) to save some disk space)
    b. `npx bsb -clean-world`
    c. `npx bsb -make-world`
 1. Run the frontend (this is in development mode): `npm run server`
 1. Browse the frontend: http://localhost:8000/
+
+### 'Production' mode
+
+You can also try out the app without the Webpack dev server:
+
+1. Assuming the above builds have already been done
+1. Put production assets in the `build` directory:
+   `npm run webpack:production`
+1. Run the backend app: `esy b dune exec backend/App.exe`
+1. Browse the frontend (note, different port than above, this is being
+   served directly from the backend app): http://localhost:8080/
 
 ## How it works
 
