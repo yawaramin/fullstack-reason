@@ -23,10 +23,9 @@ Follow these steps:
 1. Set up the backend project: `esy install`
 1. Run the backend: `esy b dune exec backend/App.exe`
 1. In another terminal, build frontend:
-  a. `cd frontend`
-  b. `npm install` (or use [pnpm](https://pnpm.js.org/) to save some disk space)
-  c. `npx bsb -clean-world`
-  d. `npx bsb -make-world`
+   a. `npm install` (or use [pnpm](https://pnpm.js.org/) to save some disk space)
+   b. `npx bsb -clean-world`
+   c. `npx bsb -make-world`
 1. Run the frontend (this is in development mode): `npm run server`
 1. Browse the frontend: http://localhost:8000/
 
