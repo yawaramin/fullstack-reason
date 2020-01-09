@@ -20,7 +20,9 @@ Follow these steps:
 
 1. Install [NodeJS](https://nodejs.org/en/) (one-time setup)
 1. Install Esy (one-time setup): `npm install --global esy@latest`
-1. Set up the backend project: `esy install`
+1. Set up the backend project: `esy install` (one-time setup but will
+   take a while to compile dependencies like SSL so grab your favourite
+   beverage)
 1. Run the backend app: `esy b dune exec backend/App.exe`
 1. In another terminal, build frontend:
    a. `npm install` (or use [pnpm](https://pnpm.js.org/) to save some disk space)

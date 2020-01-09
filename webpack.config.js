@@ -9,7 +9,7 @@ module.exports = {
   mode: isProd ? 'production' : 'development',
   output: {
     path: outputDir,
-    filename: 'Index.js'
+    filename: 'static/Index.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
