@@ -42,6 +42,8 @@ You can also try out the app without the Webpack dev server:
 1. Browse the frontend (note, different port than above, this is being
    served directly from the backend app): http://localhost:8080/
 
+Correctly caches the JS bundle–with cache busting!
+
 ## How it works
 
 This project pulls together:

@@ -9,6 +9,6 @@ _release
 *.byte
 *.native
 *.install
-build
+dist
 lib
 

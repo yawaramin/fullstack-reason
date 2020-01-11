@@ -1,6 +1,7 @@
 open ReWeb;
 
-let getFile = (name, _request) => Response.of_file(name);
+let getFile = (path, _request) =>
+  path |> String.concat("/") |> Response.of_file;
 
 let getUser = (user, _request) =>
   user
@@ -9,14 +10,19 @@ let getUser = (user, _request) =>
   |> Response.of_text(~headers=[("access-control-allow-origin", "*")])
   |> Lwt.return;
 
+let oneYr = 365 * 24 * 60 * 60;
+
 let server =
   fun
   // [GET /]
-  | (`GET, [""]) => getFile("./build/index.html")
+  | (`GET, [""]) => getFile(["dist", "index.html"])
 
-  // [GET /static/...]
-  | (`GET, ["static", ..._] as path) =>
-    getFile("./build/" ++ String.concat("/", path))
+  /* [GET /dist/...] - caches response to any request to /dist/... for a
+     year, with Webpack-hashed asset file names (i.e. revving) to bust
+     cache! */
+  | (`GET, ["dist", ..._] as path) =>
+    Filter.cache_control(Header.CacheControl.public(~max_age=oneYr, ())) @@
+    getFile(path)
 
   // [GET /bob]
   | (`GET, ["bob"]) => getUser({Shared.User.id: 1, name: "Bob"})
