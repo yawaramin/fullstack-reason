@@ -9,8 +9,8 @@ module.exports = {
   entry: './frontend/Index.bs.js',
   mode: isProd ? 'production' : 'development',
   output: {
-    path: outputDir,
-    filename: path.join(dist, 'index.[contenthash].js')
+    path: path.resolve(__dirname, dist),
+    filename: 'dist/index.[contenthash].js'
   },
   plugins: [
     new HtmlWebpackPlugin({

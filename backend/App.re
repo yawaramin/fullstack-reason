@@ -10,7 +10,7 @@ let getUser = (user, _request) =>
   |> Response.of_text(~headers=[("access-control-allow-origin", "*")])
   |> Lwt.return;
 
-let oneYr = 365 * 24 * 60 * 60;
+let max_age = 30 * 24 * 60 * 60;
 
 let server =
   fun
@@ -21,7 +21,7 @@ let server =
      year, with Webpack-hashed asset file names (i.e. revving) to bust
      cache! */
   | (`GET, ["dist", ..._] as path) =>
-    Filter.cache_control(Header.CacheControl.public(~max_age=oneYr, ())) @@
+    Filter.cache_control(Header.CacheControl.public(~max_age, ())) @@
     getFile(path)
 
   // [GET /bob]
