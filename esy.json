@@ -47,7 +47,7 @@
         }
       }
     },
-    "@opam/re-web": "yawaramin/re-web:package.json#1cf2982",
+    "@opam/re-web": "yawaramin/re-web:package.json#4d18f69",
     "@opam/ssl": "savonet/ocaml-ssl:ssl.opam#fbffa9b",
     "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#42673bd",
     "@opam/websocketaf-lwt-unix": {
