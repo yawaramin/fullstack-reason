@@ -1,4 +1,5 @@
 dependencies:
+  decco: 1.1.1_bs-platform@7.0.1
   react: 16.12.0
   react-dom: 16.12.0_react@16.12.0
   reason-react: 0.7.0
@@ -514,7 +515,6 @@ packages:
     resolution:
       integrity: sha512-Z942RysHXmJrhqk88FmKBVq/v5tqmSkDz7p54G/MGyjMnCFFnC79XWNbg+Vta8W6Wb2qtSZTSxIGkJrRpCFEiA==
   /bs-platform/7.0.1:
-    dev: true
     hasBin: true
     requiresBuild: true
     resolution:
@@ -924,6 +924,15 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
+  /decco/1.1.1_bs-platform@7.0.1:
+    dependencies:
+      bs-platform: 7.0.1
+    dev: false
+    peerDependencies:
+      bs-platform: ^6.0.0 || ^7.0.0
+    requiresBuild: true
+    resolution:
+      integrity: sha512-hif221MrEzLcjguORCYml7CAfCwWap6HuRI4x0G9TSLRoJkkDKc/Qx01JleOzMubOWFK4dbJNmKXR4+S/r3obw==
   /decode-uri-component/0.2.0:
     dev: true
     engines:
@@ -4278,6 +4287,7 @@ packages:
       integrity: sha512-HG/DWAJa1PAnHT9JAhNa8AbAv3FPaiLzioSjCcmuXXhP8MlpHO5vwls4g4j6n30Z74GVQj8Xa62dWVx1QCGklg==
 specifiers:
   bs-platform: ^7.0.1
+  decco: ^1.1.1
   html-webpack-plugin: ^3.2.0
   react: ^16.8.1
   react-dom: ^16.8.1

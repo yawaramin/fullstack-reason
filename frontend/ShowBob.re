@@ -9,8 +9,18 @@ module Response = {
 
 // Helpers for the component
 
+let decode = string =>
+  switch (Js.Json.parseExn(string)) {
+  | json =>
+    switch (Shared.User.t_decode(json)) {
+    | Ok(_) as ok => ok
+    | Error({Decco.message, _}) => Error(message)
+    }
+  | exception _ => Error("JSON parse failed")
+  };
+
 let setOk = (~setUser, string) =>
-  Js.Promise.resolve(setUser(_ => Some(Ok(Shared.User.ofString(string)))));
+  Js.Promise.resolve(setUser(_ => Some(decode(string))));
 
 let setError = (~setUser, _error) =>
   Js.Promise.resolve(setUser(_ => Some(Error("(Web request failed!)"))));

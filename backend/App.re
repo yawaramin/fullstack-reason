@@ -5,7 +5,8 @@ let getFile = (path, _request) =>
 
 let getUser = (user, _request) =>
   user
-  |> Shared.User.toString
+  |> Shared.User.to_yojson
+  |> Yojson.Safe.to_string
   // For demo purposes only!
   |> Response.of_text(~headers=[("access-control-allow-origin", "*")])
   |> Lwt.return;
@@ -18,7 +19,7 @@ let server =
   | (`GET, [""]) => getFile(["dist", "index.html"])
 
   /* [GET /dist/...] - caches response to any request to /dist/... for a
-     year, with Webpack-hashed asset file names (i.e. revving) to bust
+     month, with Webpack-hashed asset file names (i.e. revving) to bust
      cache! */
   | (`GET, ["dist", ..._] as path) =>
     Filter.cache_control(Header.CacheControl.public(~max_age, ())) @@

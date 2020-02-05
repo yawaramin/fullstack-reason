@@ -21,9 +21,10 @@
   },
   "dependencies": {
     "@esy-ocaml/reason": ">= 3.4.0 < 3.6.0",
-    "@opam/dune": ">= 1.2.1 < 2.0.0",
+    "@opam/dune": "< 3.0.0",
     "@opam/lwt": ">= 5.1.0 < 6.0.0",
     "@opam/lwt_ppx": ">= 2.0.0 < 3.0.0",
+    "@opam/ppx_deriving_yojson": ">= 3.5.1 < 4.0.0",
     "@opam/re-web": "*",
     "ocaml": "~4.8.1000"
   },
@@ -35,26 +36,26 @@
   },
   "resolutions": {
     "@opam/conf-libssl": "esy-packages/esy-openssl#860ad7f",
-    "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#014a7c4",
-    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#014a7c4",
-    "@opam/httpaf-lwt-unix": "anmonteiro/httpaf:httpaf-lwt-unix.opam#014a7c4",
+    "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#9308e34",
+    "@opam/httpaf-lwt": "anmonteiro/httpaf:httpaf-lwt.opam#9308e34",
+    "@opam/httpaf-lwt-unix": "anmonteiro/httpaf:httpaf-lwt-unix.opam#9308e34",
     "@opam/multipart-form-data": "cryptosense/multipart-form-data:multipart-form-data.opam#d49fd89",
     "@opam/piaf": {
-      "source": "anmonteiro/piaf:piaf.opam#3208cf1",
+      "source": "anmonteiro/piaf:piaf.opam#e99ae27",
       "override": {
         "dependencies": {
           "@opam/ocaml-syntax-shims": null
         }
       }
     },
-    "@opam/re-web": "yawaramin/re-web:package.json#649d664",
-    "@opam/ssl": "savonet/ocaml-ssl:ssl.opam#fbffa9b",
-    "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#bf0acbf",
+    "@opam/re-web": "yawaramin/re-web:package.json#8fe58d0",
+    "@opam/ssl": "savonet/ocaml-ssl:ssl.opam#6b75fa",
+    "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#8318e44",
     "@opam/websocketaf-lwt-unix": {
-      "source": "anmonteiro/websocketaf:websocketaf-lwt-unix.opam#bf0acbf",
+      "source": "anmonteiro/websocketaf:websocketaf-lwt-unix.opam#8318e44",
       "override": {
         "dependencies": {
-          "@opam/websocketaf-lwt": "anmonteiro/websocketaf:websocketaf-lwt.opam#bf0acbf"
+          "@opam/websocketaf-lwt": "anmonteiro/websocketaf:websocketaf-lwt.opam#8318e44"
         }
       }
     }
