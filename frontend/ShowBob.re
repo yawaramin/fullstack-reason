@@ -45,12 +45,13 @@ let make = () => {
   });
 
   switch (user) {
-  | Some(Ok({Shared.User.id, name})) =>
-    <>
-      <p> {React.string("ID=" ++ string_of_int(id))} </p>
-      <p> {React.string("Name=" ++ name)} </p>
-    </>
+  // Finished loading a user successfully:
+  | Some(Ok(user)) =>
+    // Using shared business logic:
+    <> <p> {user |> Shared.User.toString |> React.string} </p> </>
+  // Finished the request but failed to load user:
   | Some(Error(message)) => <p> {React.string(message)} </p>
+  // Not finished the request yet:
   | None => <p> {React.string("(Loading...)")} </p>
   };
 };
