@@ -10,7 +10,7 @@ module.exports = {
   mode: isProd ? 'production' : 'development',
   output: {
     path: path.resolve(__dirname, dist),
-    filename: '../dist/index.[contenthash].js'
+    filename: isProd ? '../dist/index.[contenthash].js' : 'dist/index.[contenthash].js'
   },
   plugins: [
     new HtmlWebpackPlugin({

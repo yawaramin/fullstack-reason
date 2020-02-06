@@ -36,8 +36,7 @@ Follow these steps:
 You can also try out the app without the Webpack dev server:
 
 1. Assuming the above builds have already been done
-1. Put production assets in the `build` directory:
-   `npm run webpack:production`
+1. Put production assets in the `dist` directory: `npm run dist`
 1. Run the backend app: `esy b dune exec backend/App.exe`
 1. Browse the frontend (note, different port than above, this is being
    served directly from the backend app): http://localhost:8080/
