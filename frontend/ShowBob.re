@@ -23,7 +23,7 @@ let setOk = (~setUser, string) =>
   Js.Promise.resolve(setUser(_ => Some(decode(string))));
 
 let setError = (~setUser, _error) =>
-  Js.Promise.resolve(setUser(_ => Some(Error("(Web request failed!)"))));
+  Js.Promise.resolve(setUser(_ => Some(Error("Web request failed!"))));
 
 let endpoint = "http://localhost:8080/bob";
 
@@ -44,14 +44,17 @@ let make = () => {
     None;
   });
 
-  switch (user) {
-  // Finished loading a user successfully:
-  | Some(Ok(user)) =>
-    // Using shared business logic:
-    <> <p> {user |> Shared.User.toString |> React.string} </p> </>
-  // Finished the request but failed to load user:
-  | Some(Error(message)) => <p> {React.string(message)} </p>
-  // Not finished the request yet:
-  | None => <p> {React.string("(Loading...)")} </p>
-  };
+  let message =
+    React.string(
+      switch (user) {
+      // Finished loading a user successfully:
+      | Some(Ok(user)) => Shared.User.toString(user)
+      // Finished the request but failed to load user:
+      | Some(Error(message)) => {j|(ERROR) $message|j}
+      // Not finished the request yet:
+      | None => "(Loading...)"
+      },
+    );
+
+  <p> message </p>;
 };
