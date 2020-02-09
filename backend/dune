@@ -1,4 +1,5 @@
 (executable
   (name App)
   (public_name App)
+  (modes byte exe)
   (libraries lwt re-web shared))
