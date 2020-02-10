@@ -17,6 +17,7 @@
   },
   "scripts": {
     "bin": "esy b dune exec backend/App.bc",
+    "check": "esy b dune build @check",
     "doc": "esy dune build @doc"
   },
   "dependencies": {

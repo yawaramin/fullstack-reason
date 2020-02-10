@@ -2,4 +2,5 @@
   (name App)
   (public_name App)
   (modes byte exe)
-  (libraries lwt re-web shared))
+  (libraries lwt re-web shared)
+  (preprocess (pps lwt_ppx)))

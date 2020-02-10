@@ -13,6 +13,8 @@ let getUser = (user, _request) =>
 
 let max_age = 30 * 24 * 60 * 60;
 
+let chat = Topic.make();
+
 let server =
   fun
   // [GET /]
@@ -27,6 +29,7 @@ let server =
 
   // [GET /bob]
   | (`GET, ["bob"]) => getUser({Shared.User.id: 1, name: "Bob"})
+  | (`GET, ["chat", "ws"]) => Chat.socket(chat)
   | _ => (_ => `Not_found |> Response.of_status |> Lwt.return);
 
 let () = Server.serve(server);
