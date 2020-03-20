@@ -6,7 +6,7 @@ const outputDir = path.join(__dirname, dist);
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  entry: './frontend/Index.bs.js',
+  entry: './frontend/index.js',
   mode: isProd ? 'production' : 'development',
   output: {
     path: path.resolve(__dirname, dist),
