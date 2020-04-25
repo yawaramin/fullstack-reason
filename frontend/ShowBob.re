@@ -2,10 +2,10 @@
 
 module Response = {
   type t;
-  [@bs.send] external json: t => Js.Promise.t(Js.Json.t) = "";
+  [@bs.send] external json: t => Js.Promise.t(Js.Json.t);
 };
 
-[@bs.val] external fetch: string => Js.Promise.t(Response.t) = "";
+[@bs.val] external fetch: string => Js.Promise.t(Response.t);
 
 // Helpers for the component
 
@@ -15,11 +15,19 @@ let decode = json =>
   | Error({Decco.message, _}) => Error(message)
   };
 
-let setOk = (~setUser, json) =>
-  Js.Promise.resolve(setUser(_ => Some(decode(json))));
+let setOk = (~mounted, ~setUser, json) =>
+  Js.Promise.resolve(
+    if (mounted) {
+      setUser(_ => Some(decode(json)));
+    },
+  );
 
-let setError = (~setUser, _error) =>
-  Js.Promise.resolve(setUser(_ => Some(Error("Web request failed!"))));
+let setError = (~mounted, ~setUser, _error) =>
+  Js.Promise.resolve(
+    if (mounted) {
+      setUser(_ => Some(Error("Web request failed!")));
+    },
+  );
 
 let endpoint = "http://localhost:8080/bob";
 
@@ -27,17 +35,18 @@ let endpoint = "http://localhost:8080/bob";
 
 [@react.component]
 let make = () => {
+  let mounted = ref(true);
   let (user, setUser) = React.useState(() => None);
 
   React.useEffect0(() => {
     endpoint
     |> fetch
     |> Js.Promise.then_(Response.json)
-    |> Js.Promise.then_(setOk(~setUser))
-    |> Js.Promise.catch(setError(~setUser))
+    |> Js.Promise.then_(setOk(~mounted=mounted^, ~setUser))
+    |> Js.Promise.catch(setError(~mounted=mounted^, ~setUser))
     |> ignore;
 
-    None;
+    Some(() => mounted := false);
   });
 
   let message =
