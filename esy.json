@@ -20,10 +20,9 @@
     "doc": "esy dune build @doc"
   },
   "dependencies": {
-    "@esy-ocaml/reason": ">= 3.4.0 < 3.6.0",
+    "@esy-ocaml/reason": ">= 3.6.0 < 4.0.0",
     "@opam/dune": "< 3.0.0",
-    "@opam/lwt": ">= 5.1.0 < 6.0.0",
-    "@opam/lwt_ppx": ">= 2.0.0 < 3.0.0",
+    "@opam/lwt": ">= 5.3.0 < 6.0.0",
     "@opam/ppx_deriving_yojson": ">= 3.5.1 < 4.0.0",
     "@opam/re-web": "*",
     "ocaml": "~4.8.1000"
@@ -36,12 +35,12 @@
   },
   "resolutions": {
     "@opam/multipart-form-data": "cryptosense/multipart-form-data:multipart-form-data.opam#d49fd89",
-    "@opam/re-web": "yawaramin/re-web:package.json#7767ce0",
+    "@opam/re-web": "yawaramin/re-web:package.json#f531d45",
     "@opam/websocketaf": {
       "source": "anmonteiro/websocketaf:websocketaf.opam#8318e44",
       "override": {
         "dependencies": {
-          "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#9308e34"
+          "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#eac806e"
         }
       }
     },
