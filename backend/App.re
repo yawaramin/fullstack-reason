@@ -6,7 +6,7 @@ let getFile = (path, _request) =>
 let timeout = 0.25;
 
 let socket = (cache, name, _) => {
-	let%lwt topic = Context.create(cache, Context.Key(name));
+  let%lwt topic = Context.create(cache, Context.Key(name));
   let%lwt subscription = Topic.subscribe(topic);
 
   let rec handler = (pull, push) => {
@@ -14,6 +14,10 @@ let socket = (cache, name, _) => {
     let outgoing = Topic.pull(subscription, ~timeout);
     let%lwt incoming = incoming;
     let%lwt outgoing = outgoing;
+    let incoming = switch incoming {
+    	| Ok(message) => Some(message)
+    	| Error(_) => None
+		};
 
     Option.iter(push, outgoing);
     let%lwt () =
@@ -30,7 +34,7 @@ let socket = (cache, name, _) => {
 
 let max_age = 30 * 24 * 60 * 60;
 
-let cache : Context.cache = Context.Cache.make();
+let cache: Context.cache = Context.Cache.make();
 
 let server =
   fun

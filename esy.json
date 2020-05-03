@@ -25,32 +25,17 @@
     "@opam/lwt": ">= 5.3.0 < 6.0.0",
     "@opam/ppx_deriving_yojson": ">= 3.5.1 < 4.0.0",
     "@opam/re-web": "*",
-    "ocaml": "~4.8.1000"
+    "ocaml": "~4.9"
   },
   "devDependencies": {
     "@opam/merlin": "*",
-    "ocaml": "~4.8.1000",
+    "ocaml": "~4.9",
     "@opam/odoc": "*",
     "@opam/utop": "*"
   },
   "resolutions": {
-    "@opam/multipart-form-data": "cryptosense/multipart-form-data:multipart-form-data.opam#d49fd89",
-    "@opam/re-web": "yawaramin/re-web:package.json#f531d45",
-    "@opam/websocketaf": {
-      "source": "anmonteiro/websocketaf:websocketaf.opam#8318e44",
-      "override": {
-        "dependencies": {
-          "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#eac806e"
-        }
-      }
-    },
-    "@opam/websocketaf-lwt-unix": {
-      "source": "anmonteiro/websocketaf:websocketaf-lwt-unix.opam#8318e44",
-      "override": {
-        "dependencies": {
-          "@opam/websocketaf-lwt": "anmonteiro/websocketaf:websocketaf-lwt.opam#8318e44"
-        }
-      }
-    }
+    "@opam/re-web": "yawaramin/re-web:package.json#218c9753e5b8367bb6735a54bd035e93cb1e5573",
+	  "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#d7fcccc",
+    "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#05f3b25"
   }
 }
