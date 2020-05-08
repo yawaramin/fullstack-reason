@@ -15,20 +15,6 @@ let decode = json =>
   | Error({Decco.message, _}) => Error(message)
   };
 
-let setOk = (~mounted, ~setUser, json) =>
-  Js.Promise.resolve(
-    if (mounted) {
-      setUser(_ => Some(decode(json)));
-    },
-  );
-
-let setError = (~mounted, ~setUser, _error) =>
-  Js.Promise.resolve(
-    if (mounted) {
-      setUser(_ => Some(Error("Web request failed!")));
-    },
-  );
-
 let endpoint = "http://localhost:8080/bob";
 
 // The component
@@ -36,17 +22,26 @@ let endpoint = "http://localhost:8080/bob";
 [@react.component]
 let make = () => {
   let mounted = ref(true);
+  let unmount = Some(() => mounted := false);
   let (user, setUser) = React.useState(() => None);
+
+  let setOk(json) = Js.Promise.resolve(
+    if (mounted^) setUser(_ => Some(decode(json)))
+  );
+
+  let setError(_) = Js.Promise.resolve(
+    if (mounted^) setUser(_ => Some(Error("Web request failed!")))
+  );
 
   React.useEffect0(() => {
     endpoint
     |> fetch
     |> Js.Promise.then_(Response.json)
-    |> Js.Promise.then_(setOk(~mounted=mounted^, ~setUser))
-    |> Js.Promise.catch(setError(~mounted=mounted^, ~setUser))
+    |> Js.Promise.then_(setOk)
+    |> Js.Promise.catch(setError)
     |> ignore;
 
-    Some(() => mounted := false);
+    unmount;
   });
 
   let message =
