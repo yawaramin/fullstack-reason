@@ -1,6 +1,6 @@
 {
   "name": "fullstack-reason",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Example Reason Esy Project",
   "license": "MIT",
   "esy": {
@@ -34,8 +34,6 @@
     "@opam/utop": "*"
   },
   "resolutions": {
-    "@opam/httpaf": "anmonteiro/httpaf:httpaf.opam#d7fcccc",
-    "@opam/re-web": "yawaramin/re-web:package.json#218c975",
-    "@opam/websocketaf": "anmonteiro/websocketaf:websocketaf.opam#05f3b25"
+    "@opam/re-web": "yawaramin/re-web:package.json#15907ba"
   }
 }
