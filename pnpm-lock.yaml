@@ -1,4 +1,5 @@
 dependencies:
+  '@yawaramin/prometo': 0.10.0
   decco: 1.1.1_bs-platform@7.2.2
   react: 16.12.0
   react-dom: 16.12.0_react@16.12.0
@@ -167,6 +168,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+  /@yawaramin/prometo/0.10.0:
+    dependencies:
+      bs-platform: 7.2.2
+    dev: false
+    resolution:
+      integrity: sha512-w8dNKVhg/wtiTvM7bQGlTsrPtH+LRlhdzQZRj10ArIewuPle6S62dpXAeFRO9AnWqyaSflBWcKAAtx1PMxQwRQ==
   /accepts/1.3.7:
     dependencies:
       mime-types: 2.1.25
@@ -4286,6 +4293,7 @@ packages:
     resolution:
       integrity: sha512-HG/DWAJa1PAnHT9JAhNa8AbAv3FPaiLzioSjCcmuXXhP8MlpHO5vwls4g4j6n30Z74GVQj8Xa62dWVx1QCGklg==
 specifiers:
+  '@yawaramin/prometo': ^0.10.0
   bs-platform: ^7.2.2
   decco: ^1.1.1
   html-webpack-plugin: ^3.2.0

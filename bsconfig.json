@@ -22,6 +22,7 @@
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
+    "@yawaramin/prometo",
     "decco",
     "reason-react"
   ],

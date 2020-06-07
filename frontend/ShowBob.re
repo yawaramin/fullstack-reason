@@ -1,3 +1,5 @@
+module Prometo = Yawaramin__Prometo;
+
 // One-off binding to Fetch API
 
 module Response = {
@@ -21,27 +23,18 @@ let endpoint = "http://localhost:8080/bob";
 
 [@react.component]
 let make = () => {
-  let mounted = ref(true);
-  let unmount = Some(() => mounted := false);
   let (user, setUser) = React.useState(() => None);
 
-  let setOk(json) = Js.Promise.resolve(
-    if (mounted^) setUser(_ => Some(decode(json)))
-  );
-
-  let setError(_) = Js.Promise.resolve(
-    if (mounted^) setUser(_ => Some(Error("Web request failed!")))
-  );
-
   React.useEffect0(() => {
-    endpoint
-    |> fetch
-    |> Js.Promise.then_(Response.json)
-    |> Js.Promise.then_(setOk)
-    |> Js.Promise.catch(setError)
-    |> ignore;
+    let promise = endpoint
+      |> fetch
+      |> Prometo.fromPromise
+      |> Prometo.thenPromise(~f=Response.json);
 
-    unmount;
+    Prometo.forEach(~f=json => setUser(_ => Some(decode(json))), promise);
+    Prometo.Error.forEach(~f=_ => setUser(_ => Some(Error("Web request failed!"))), promise);
+
+    Some(() => Prometo.cancel(promise));
   });
 
   let message =
