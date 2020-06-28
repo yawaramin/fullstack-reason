@@ -24,7 +24,7 @@
     "@opam/dune": "< 3.0.0",
     "@opam/lwt": ">= 5.3.0 < 6.0.0",
     "@opam/ppx_deriving_yojson": ">= 3.5.1 < 4.0.0",
-    "@opam/re-web": "*",
+    "@yawaramin/re-web": ">= 0.6.0 < 1.0.0",
     "ocaml": "~4.8.1000"
   },
   "devDependencies": {
@@ -32,8 +32,5 @@
     "ocaml": "~4.8.1000",
     "@opam/odoc": "*",
     "@opam/utop": "*"
-  },
-  "resolutions": {
-    "@opam/re-web": "yawaramin/re-web:package.json#15907ba"
   }
 }
