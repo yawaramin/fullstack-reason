@@ -6,12 +6,13 @@ let getFile = (path, _request) =>
 let getUser = (user, _request) =>
   user
   |> Shared.User.to_yojson
-  |> Yojson.Safe.to_string
   // For demo purposes only!
-  |> Response.of_text(~headers=[("access-control-allow-origin", "*")])
+  |> Response.of_json(~headers=[
+    Header.AccessControlAllowOrigin.(to_header(All))
+  ])
   |> Lwt.return;
 
-let max_age = 30 * 24 * 60 * 60;
+let maxAge = 30 * 24 * 60 * 60;
 
 let server =
   fun
@@ -22,7 +23,7 @@ let server =
      month, with Webpack-hashed asset file names (i.e. revving) to bust
      cache! */
   | (`GET, ["dist", ..._] as path) =>
-    Filter.cache_control(Header.CacheControl.public(~max_age, ())) @@
+    Filter.cache_control(Header.CacheControl.public(~max_age=maxAge, ())) @@
     getFile(path)
 
   // [GET /bob]
